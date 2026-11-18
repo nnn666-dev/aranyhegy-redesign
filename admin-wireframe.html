@@ -1,0 +1,87 @@
+<style>
+.wf{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;color:#14120e;font-family:Jost,system-ui,sans-serif;font-size:14px}
+.ph{width:300px;background:#f4efe6;border:1px solid #cfc6b3;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px -14px rgba(0,0,0,.4)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#fbf8f2;border-bottom:1px solid #e4dccb}
+.top b{font:600 15px Cinzel,serif;letter-spacing:.04em}.top span{font-size:12px;color:#5c554a}
+.body{padding:12px;display:grid;gap:10px}
+.card{background:#fbf8f2;border:1px solid #e4dccb;border-radius:4px;padding:10px}
+.lbl{font:500 10px Cinzel,serif;letter-spacing:.1em;text-transform:uppercase;color:#7a5a2c;margin:2px 0 6px}
+.todo{background:#fbeacb;border-color:#e6cf9c}.row{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid rgba(20,18,14,.08)}.row:first-of-type{border-top:0}
+.chip{display:inline-block;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:500}
+.ok{background:#dcebd9;color:#1f5a2e}.wait{background:#fbeacb;color:#7a4a00}.bad{background:#f6d8d4;color:#a8322a}.vo{background:#e3dcee;color:#4a3a78}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini b{display:block;font:600 13px Cinzel,serif}
+.btns{display:flex;gap:6px;margin-top:6px}.btn{border-radius:999px;padding:7px 12px;font-size:12px;font-weight:600;border:1px solid #b8915a;background:transparent}
+.btn.p{background:linear-gradient(180deg,#f3dfaa,#dfba70 55%,#c79a4a);border-color:#b8915a}
+.strip{display:grid;grid-template-columns:18px repeat(14,1fr);gap:2px;align-items:center;font-size:9px}
+.strip i{height:14px;border-radius:2px;background:#e8e4dc;display:block}.strip i.g{background:#8fbf93}.strip i.a{background:#e8c27a}.strip i.b{background:repeating-linear-gradient(45deg,#cfc6b3,#cfc6b3 3px,#e8e4dc 3px,#e8e4dc 6px)}.strip i.v{background:#b7a6d6}.strip i.x{background:#9bb8dd}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);background:#fbf8f2;border-top:1px solid #e4dccb;text-align:center;font-size:10.5px;padding:8px 0 10px}
+.tabs div.on{color:#7a5a2c;font-weight:600}
+.fab{position:relative;height:0}.fab span{position:absolute;right:12px;top:-62px;width:46px;height:46px;border-radius:50%;background:#c79a4a;display:grid;place-items:center;font-size:24px;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+.cap{font-size:12px;color:#5c554a;max-width:300px;margin-top:6px}
+.cal{display:grid;grid-template-columns:34px 1fr 1fr;gap:3px;font-size:11px}.cal div{padding:5px 4px;border-radius:3px;min-height:26px}
+.d{color:#5c554a;text-align:right}.cs{background:#dcebd9}.cw{background:#fbeacb}.cb{background:repeating-linear-gradient(45deg,#cfc6b3,#cfc6b3 3px,#e8e4dc 3px,#e8e4dc 6px)}.cf{background:#fff;border:1px dashed #cfc6b3}.cv{background:#e3dcee}.cx{background:#d6e3f3}
+</style>
+<div class="wf">
+ <div><div class="ph">
+  <div class="top"><b>Aranyhegy</b><span>HU | EN &nbsp;🔔 2</span></div>
+  <div class="body">
+   <div style="font:400 18px 'Libre Caslon Text',serif">Jó reggelt! Kedd, nov. 17.</div>
+   <div class="card todo"><div class="lbl">Teendők (2)</div>
+     <div class="row"><span>Fizetésre vár: Kiss A.<br><small>Smaragd · nov. 22–24</small></span><span class="chip wait">23 perc</span></div>
+     <div class="row"><span>Vendégadat hiányzik<br><small>Zafir · ma 15:00</small></span><span class="chip bad">NTAK</span></div></div>
+   <div class="two">
+     <div class="card mini"><div class="lbl">Smaragd</div><b>Érkezik 15:00</b><small>Nagy Béla · 2 fő</small></div>
+     <div class="card mini"><div class="lbl">Zafir</div><b>Üres ma este</b><small>következő: nov. 21.</small></div></div>
+   <div class="card"><div class="lbl">Ma érkezik</div>
+     <div class="row"><span><b>Nagy Béla</b> · Smaragd<br><small>2 fő · fizetve · kulcskód nincs elküldve</small></span><span class="chip ok">Fizetve</span></div>
+     <div class="btns"><span class="btn">Hívás</span><span class="btn p">Részletek</span></div></div>
+   <div class="card"><div class="lbl">Ma távozik</div>
+     <div class="row"><span><b>Tóth Anna</b> · Zafir 11:00<br><small>takarítás 15:00-ig</small></span><span class="chip wait">Takarítandó</span></div></div>
+   <div class="card"><div class="lbl">Következő 14 nap</div>
+     <div class="strip"><b>S</b><i class="g"></i><i class="g"></i><i></i><i></i><i class="a"></i><i class="a"></i><i></i><i class="v"></i><i class="v"></i><i></i><i class="b"></i><i class="b"></i><i></i><i></i>
+      <b>Z</b><i></i><i class="g"></i><i class="g"></i><i class="g"></i><i></i><i></i><i class="x"></i><i class="x"></i><i></i><i></i><i class="g"></i><i class="g"></i><i></i><i></i></div></div>
+  </div>
+  <div class="fab"><span>+</span></div>
+  <div class="tabs"><div class="on">▦<br>Ma</div><div>▤<br>Naptár</div><div>☰<br>Foglalások</div><div>🎁<br>Utalványok</div><div>⋯<br>Több</div></div>
+ </div><div class="cap"><b>Ma</b>: 5 másodperces kép. Nincs grafikon. A piros/borostyán teendők legfelül.</div></div>
+
+ <div><div class="ph">
+  <div class="top"><b>Naptár</b><span>‹ nov. 2026 ›</span></div>
+  <div class="body">
+   <div class="card"><div class="lbl">Szabad-e? nov. 20–22.</div>
+     <div class="row"><span>Smaragd</span><span class="chip ok">✔ szabad · 120 000 Ft</span></div>
+     <div class="row"><span>Zafir</span><span class="chip bad">✖ foglalt</span></div>
+     <div class="row"><span>Egész ház</span><span class="chip bad">✖ nem szabad</span></div>
+     <div class="btns"><span class="btn p">Új foglalás</span><span class="btn">Zárolás</span></div></div>
+   <div class="cal">
+    <div></div><div style="text-align:center"><b>Smaragd</b></div><div style="text-align:center"><b>Zafir</b></div>
+    <div class="d">17</div><div class="cs">Nagy B.</div><div class="cf"></div>
+    <div class="d">18</div><div class="cs">Nagy B.</div><div class="cf"></div>
+    <div class="d">19</div><div class="cf"></div><div class="cs">Tóth A.</div>
+    <div class="d">20</div><div class="cf"></div><div class="cs">Tóth A.</div>
+    <div class="d">21</div><div class="cw">tartás 23′</div><div class="cb">Karbantartás</div>
+    <div class="d">22</div><div class="cv">Utalvány</div><div class="cx">Booking</div>
+   </div>
+   <div class="card" style="font-size:11.5px"><div class="lbl">Jelmagyarázat</div>
+     <span class="chip ok">fizetett</span> <span class="chip wait">tartás</span> <span class="chip vo">utalvány</span> <span class="chip" style="background:#d6e3f3;color:#2a4a78">külső iCal</span> <span class="chip" style="background:#e8e4dc">zárolt</span>
+     <div style="margin-top:6px;color:#5c554a">iCal szinkron: 10 perce ✔</div></div>
+  </div>
+  <div class="tabs"><div>▦<br>Ma</div><div class="on">▤<br>Naptár</div><div>☰<br>Foglalások</div><div>🎁<br>Utalványok</div><div>⋯<br>Több</div></div>
+ </div><div class="cap"><b>Naptár</b>: két nap érintése egyből megmondja a szabad apartmanokat és az árat.</div></div>
+
+ <div><div class="ph">
+  <div class="top"><b>Új foglalás</b><span>telefonos</span></div>
+  <div class="body">
+   <div class="card"><div class="lbl">1 · Időpont és apartman</div>
+     <div class="row"><span>nov. 20 → nov. 22 (2 éj)</span><span class="chip ok">Smaragd szabad</span></div></div>
+   <div class="card"><div class="lbl">2 · Vendég</div><small>Név · Telefon · E-mail (nem kötelező) · Létszám · Nyelv · Megjegyzés</small></div>
+   <div class="card"><div class="lbl">3 · Fizetés</div>
+     <div class="row"><span>◉ Fizetési link küldése (SMS + e-mail)</span></div>
+     <div class="row"><span>○ Már fizetve (átutalás / SZÉP / készpénz)</span></div>
+     <small>A napokat 24 óráig tartjuk.</small></div>
+   <div class="card" style="background:#14120e;color:#f4efe6"><div style="display:flex;justify-content:space-between"><span>Összesen</span><b>120 000 Ft</b></div></div>
+   <div class="btns"><span class="btn p" style="flex:1;text-align:center">Foglalás és link küldése</span></div>
+  </div>
+  <div class="tabs"><div>▦<br>Ma</div><div>▤<br>Naptár</div><div class="on">☰<br>Foglalások</div><div>🎁<br>Utalványok</div><div>⋯<br>Több</div></div>
+ </div><div class="cap"><b>Telefonos foglalás</b>: egy oldal, cél: 60 másodperc.</div></div>
+</div>

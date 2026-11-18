@@ -1,0 +1,32 @@
+const B='http://localhost:8888';
+const post=(p,b)=>fetch(B+p,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(async r=>[r.status,await r.json()]);
+const g=(p)=>fetch(B+p).then(async r=>[r.status,await r.json()]);
+const OFF=1000+Math.floor(Math.random()*20000)*7%6000; // unique date window per run, so repeated runs never collide
+const day=n=>new Date(Date.now()+(n+OFF)*864e5).toISOString().slice(0,10);
+const ok=(c,m)=>{console.log((c?'PASS':'FAIL'),m);if(!c)process.exitCode=1};
+const base={guests:2,apt:'smaragd',name:'Teszt Elek',email:'teszt@example.com',phone:'+36301234567',terms:true,lang:'hu'};
+const I=day(200),O=day(203);
+let [s,r]=await g(`/api/quote?in=${I}&out=${O}&guests=2&apt=smaragd`);ok(s===200&&r.amount===180000&&r.available,'quote 3 nights = 180000, available');
+[s,r]=await post('/api/reserve',{...base,in:I,out:O,apt:'smaragd',amount:1});ok(s===200&&r.mode==='demo'&&r.amount===180000,'reserve ignores client amount, demo mode');
+const id=r.id,t=r.token;
+[s,r]=await post('/api/reserve',{...base,in:day(202),out:day(205),apt:'smaragd',email:'masik@example.com'});ok(s===409,'overlapping booking rejected (409) -> '+s);
+[s,r]=await post('/api/reserve',{...base,in:day(202),out:day(205),apt:'haz-any',email:'masik@example.com'});ok(s===200&&r.apt==='zafir','haz-any falls through to the free apartment (zafir) -> '+r.apt);
+const idZ=r.id,tZ=r.token;
+[s,r]=await g(`/api/quote?in=${day(202)}&out=${day(204)}&guests=2&apt=haz-any`);ok(r.available===false,'both apartments now held -> unavailable');
+[s,r]=await post('/api/demo-pay',{id,t:'wrong'});ok(s===404,'demo-pay with wrong token -> 404');
+[s,r]=await g(`/api/booking?id=${id}&t=${t}`);ok(r.booking.status==='pending','status pending before payment');
+[s,r]=await post('/api/demo-pay',{id,t});ok(s===200&&r.booking.status==='confirmed','demo payment confirms');
+[s,r]=await post('/api/demo-pay',{id,t});ok(s===200&&r.booking.status==='confirmed','second confirm is idempotent');
+[s,r]=await post('/api/demo-pay',{id:idZ,t:tZ,action:'cancel'});ok(r.booking.status==='cancelled','cancel releases hold');
+[s,r]=await g(`/api/quote?in=${day(202)}&out=${day(204)}&guests=2&apt=zafir`);ok(r.available===true,'zafir free again after cancel');
+[s,r]=await g(`/api/quote?in=${I}&out=${O}&guests=2&apt=smaragd`);ok(r.available===false,'smaragd stays taken after confirmed');
+[s,r]=await post('/api/reserve',{...base,in:day(300),out:day(301),email:'nem-email'});ok(s===400&&r.error==='email','bad email -> 400');
+[s,r]=await post('/api/reserve',{...base,in:day(300),out:day(301),terms:false});ok(s===400&&r.error==='terms','terms not accepted -> 400');
+[s,r]=await post('/api/reserve',{...base,in:day(300),out:day(301),guests:3});ok(s===400&&r.error==='phone_only','3 guests -> phone only');
+[s,r]=await post('/api/reserve',{...base,in:'2020-01-01',out:'2020-01-02'});ok(s===400&&r.error==='past','past date -> 400');
+[s,r]=await post('/api/reserve',{...base,in:day(300),out:day(301),website:'http://spam'});ok(s===200&&!r.id,'honeypot silently ignored');
+[s,r]=await post('/api/stripe-webhook',{type:'x'});ok(s===503||s===400,'webhook without secret/signature refused -> '+s);
+// concurrency against the real function
+const J=day(400),K=day(402);
+const rs=await Promise.all([1,2,3,4,5].map(i=>post('/api/reserve',{...base,in:J,out:K,apt:'zafir',email:`c${i}@example.com`})));
+ok(rs.filter(x=>x[0]===200).length===1,'5 parallel requests -> exactly one succeeds ('+rs.map(x=>x[0]).join(',')+')');

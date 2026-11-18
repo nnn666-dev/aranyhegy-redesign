@@ -1,0 +1,140 @@
+s136 ::: Call
+s137 ::: 3-4&nbsp;guests
+s138 ::: Both apartments: 2 × 60,000 HUF.
+s139 ::: 120,000 HUF
+s140 ::: <b>0 HUF</b> TOURIST TAX
+s141 ::: Check-in
+s142 ::: from 15:00
+s143 ::: Check-out
+s144 ::: until 11:00
+s145 ::: Pets
+s146 ::: Smoking
+s147 ::: Parties
+s148 ::: Pets, smoking and parties are not allowed,
+s149 ::: the&nbsp;peace belongs to&nbsp;our guests.
+s150 ::: Lose yourselves in each other under the&nbsp;stars.
+s151 ::: The warm bubbles of the covered jacuzzi and the heat of the infrared and Finnish saunas invite you to unwind all year round.
+s152 ::: Covered jacuzzi
+s153 ::: Soak under the stars
+s154 ::: Finnish and infrared sauna
+s155 ::: Warm through, the healthy way
+s156 ::: From above
+s157 ::: Unwind, just the two of you
+s158 ::: Pool
+s159 ::: Sunbathe by the heated pool
+s160 ::: <span>On request</span> Private wellness time slot
+s161 ::: Two hours when the jacuzzi and the starry sky are yours alone.
+s162 ::: If both apartments have guests, we provide a 2-hour private evening wellness slot per couple on request, so your stargazing jacuzzi time is guaranteed to be yours alone.
+s163 ::: Just tell us!
+s164 ::: Request a time slot!
+s165 ::: Enjoy private wellness!
+s166 ::: hours<small>per couple</small>
+s167 ::: ⟦0⟧Evening
+s168 ::: Recharge, switch off, relax.
+s169 ::: Garden charcoal grill, sun loungers, two hanging chairs, free electric scooters and electric car charging.
+s170 ::: 2,400 m² garden
+s171 ::: Relax armchairs
+s172 ::: Charcoal grill
+s173 ::: Sun loungers
+s174 ::: Electric car charging
+s175 ::: Treasures of the area.
+s176 ::: If you want to step out of the calm for a day, there is plenty to do around Szada: an arboretum, a royal palace, a bear sanctuary, an equestrian park and a basilica. All are within 30 minutes of the house by car.
+s177 ::: Vácrátót · approx. 15 min
+s178 ::: Vácrátót Arboretum
+s179 ::: Hungary's largest botanical garden, with more than a century and a half of history.
+s180 ::: The Vácrátót Arboretum is the country's largest botanical garden and has been running for more than a century and a half. Across its spacious, well-kept grounds, themed gardens, exotic and native plant collections, shady tree-lined avenues and picturesque lakes follow one another.
+s181 ::: It shows a different face in every season: flowering bulbs and shrubs in spring, lush greenery and reflecting lakes in summer, golden foliage in autumn. You can stroll comfortably along wide, well-kept paths, and the greenhouses hold plants from all over the world.
+s182 ::: A good choice for couples, families and solo visitors alike. It is excellent for quiet walks and photography, especially in autumn.
+s183 ::: Visit website
+s184 ::: Veresegyház · approx. 15 min
+s185 ::: Medveotthon Bear Sanctuary
+s186 ::: A shelter and education centre for rescued brown bears and wolves.
+s187 ::: The Medveotthon in Veresegyház works as a shelter and an education centre. Rescued brown bears and wolves live here in a spacious, natural habitat, in calm, stress-free surroundings, and visitors can watch them from a respectful distance.
+s188 ::: The most popular experience is feeding the bears: with a long wooden spoon you can offer them honey. It is especially memorable for children, but adults also get a fascinating insight into the bears' behaviour and natural habits.
+s189 ::: Comfortable footpaths and information boards help you find your way. It is an ideal family outing, mostly from spring to autumn, when the animals are more active. The visit also draws attention to the importance of animal welfare and responsible nature conservation.
+s190 ::: Domonyvölgy · approx. 20 min
+s191 ::: Domonyvölgy and Lázár Equestrian Park
+s192 ::: Riding shows, carriage driving and traditional Hungarian food among rolling hills.
+s193 ::: Lázár Equestrian Park lies among the rolling hills, green meadows and quiet countryside of Domonyvölgy. Here you can get to know Hungarian horse culture and rural traditions up close.
+s194 ::: The park is known for its spectacular riding shows, where skilled riders present elements of traditional Hungarian riding and carriage driving. The programmes are often accompanied by live commentary, so you understand the significance of these centuries-old traditions even better.
+s195 ::: On site there are restaurants serving traditional Hungarian dishes, a petting zoo you can walk through, and carriage rides. A good programme for families, groups and international guests, if you fancy a slower day close to nature.
+s196 ::: Gödöllő · approx. 20 min
+s197 ::: Gödöllő Arboretum (Arbo-Park)
+s198 ::: A quiet forest park with accessible paths, also good for dog walking and picnics.
+s199 ::: The Gödöllő Arboretum, known locally as Arbo-Park, is a quiet forest park close to nature. The well-kept, spacious grounds show a variety of forest types and many tree species, yet keep the calm of the natural setting. Come here if you want to get a little away from the bustle of the city.
+s200 ::: On the well-kept, accessible paths, people of all ages can walk comfortably. It suits a family outing, dog walking or a quiet walk for two. Each season gives something different: fresh green leaves in spring and colourful foliage in autumn make the visit memorable.
+s201 ::: Easy to walk, yet spacious enough to quieten down in. A good place for a picnic, light exercise or simply a slow walk in nature.
+s202 ::: Gödöllő · approx. 10 min
+s203 ::: Gödöllő Royal Palace
+s204 ::: A baroque palace in Gödöllő, favourite summer residence of Queen Elisabeth (Sisi).
+s205 ::: The Grassalkovich Palace in Gödöllő is one of Hungary's most important baroque monuments. It is especially well known because Queen Elisabeth, known as Sisi, used it as her favourite summer residence, and it also played an important role in the days of the Austro-Hungarian Monarchy.
+s206 ::: In the splendidly furnished rooms, original furniture, works of art and historical exhibitions evoke everyday life at court. It is worth choosing a guided tour: it tells you in detail about the history of the palace, its residents and the political background of the era.
+s207 ::: After your visit you can walk calmly in the park and ornamental gardens around the palace. An elegant, rewarding cultural programme for anyone interested in history, architecture and royal life.
+s208 ::: Szada · approx. 25 min
+s209 ::: Szada Ring
+s210 ::: A 1,050-metre asphalt go-kart track with more than 15 karts.
+s211 ::: Szada Ring is a modern go-kart track in Szada, on the far side of the village, so it is about 25 minutes from the house by car. The technical, 1,050-metre asphalt track is 8–10 metres wide, and the karts can reach speeds of up to 70 km/h in a safe environment.
+s212 ::: Karts of different power mean beginners and more experienced drivers both have a good time. It is a good programme for groups of friends, families and corporate team-building alike: experienced staff help, races come with professional timing, and the vehicles are regularly maintained.
+s213 ::: On site there is also a mini traffic park for the little ones and a bicycle pump track. For opening hours and booking, check the track's website.
+s214 ::: Máriabesnyő · approx. 15 min
+s215 ::: Máriabesnyő Basilica of the Assumption
+s216 ::: Built in 1755, still a popular place of pilgrimage in Máriabesnyő.
+s217 ::: The Máriabesnyő Basilica of the Assumption is one of Hungary's most important pilgrimage sites and has drawn visitors for more than two and a half centuries. The church, built in 1755, defines the skyline of the area from afar.
+s218 ::: The interior is marked by richly decorated altars, finely detailed frescoes and harmonious proportions. The quiet of the church invites reflection, whether religious or cultural interest brought you here.
+s219 ::: It is especially beautiful in the late afternoon, when the setting sun lights up the façade. A good short outing if you want calm and inner recharge.
+s220 ::: Szada and surroundings
+s221 ::: Hiking trails
+s222 ::: Three marked hikes in the Gödöllő Hills: Margita tower, the Máriabesnyő loop, the Szada loop.
+s223 ::: Margita and the survey tower with the Holy Crown
+s224 ::: 3 km
+s225 ::: 90 m ascent
+s226 ::: approx. 1 hour
+s227 ::: easy
+s228 ::: approx. 5 min by car from the house
+s229 ::: A short forest hike to Szada's highest point. On top of the 344.2-metre Margita stands a 30-metre geodetic survey tower built in 1974, with a stylised replica of the Holy Crown added in 2006. The marked path starts at the end of Arany János utca, at the edge of the village; at the junctions, the yellow stripe and red triangle markings lead to the tower.
+s230 ::: From the top you can see the Visegrád Mountains, the Börzsöny, the Cserhát and the Mátra. Climbing the tower's inner ladders is dangerous, as a sign at the entrance says, so do it only at your own risk.
+s231 ::: Trail description (Telex)
+s232 ::: Máriabesnyő, Pap Miska Spring and the Babat church ruin
+s233 ::: 12.4 km
+s234 ::: 330 m ascent
+s235 ::: approx. 4 hours
+s236 ::: approx. 15 min by car from the house
+s237 ::: The hike starts at the Székely gate of the Máriabesnyő shrine, past the Stations of the Cross and the basilica. The red marking climbs Gudra Hill (the hardest section, 65 metres of ascent, about a quarter of an hour), then descends on a narrow path to the Pap Miska Spring. From there you cross under the M3 motorway to the Babat stable manor and the memorial plaque of the church ruin, and return to Máriabesnyő along the Mária út markings.
+s238 ::: Near the motorway, traffic noise accompanies you for a while. By car you can park in the car park next to the shrine. If you want something shorter: the walk to the Pap Miska Spring is 5.2 km, 150 m ascent, about 2 hours.
+s239 ::: Trail description (Margita 344.2 TSE)
+s240 ::: Szada loop: Magyalos-tető and Margita
+s241 ::: 13.8 km
+s242 ::: 316 m ascent
+s243 ::: 3–5 hours
+s244 ::: starts from the village
+s245 ::: A marked loop from Szada through the forests of the Gödöllő Hills. The yellow cross marking leads out of the village, the yellow stripe takes you to Magyalos-tető, and from there the red stripe climbs to the top of Margita. On the way back you return to Szada on the familiar yellow stripe.
+s246 ::: Shorter than a full-day outing, yet a rewarding hike for fitter walkers and families alike. According to the description, until a lookout tower is built, only the geodetic tower stands among the trees at the summit.
+s247 ::: Route on the map
+s248 ::: The data come from the linked trail descriptions. Before you set out, check the current markings, the weather and the condition of the route.
+s249 ::: FAQ
+s250 ::: What guests usually ask.
+s251 ::: We have collected the most frequently asked questions so that you know everything before booking. If you still cannot find the answer, we are happy to help.
+s252 ::: Phone
+s253 ::: Email
+s254 ::: hello@aranyhegyapartmanhaz.hu
+s255 ::: Guests
+s256 ::: up to 4 adults
+s257 ::: Parking
+s258 ::: free
+s259 ::: Booking and prices
+s260 ::: Can we book for just one night?
+s261 ::: Yes. There is no minimum stay; you can book even for a single night. The price is 60,000 HUF per night per apartment, also on weekends and public holidays.
+s262 ::: How much does a night cost?
+s263 ::: One apartment for two guests costs 60,000 HUF per night. The <strong>whole house</strong> for the two of you is 90,000 HUF per night, bookable by phone only. Two apartments together (3-4 guests) cost 2 × 60,000 HUF, that is 120,000 HUF per night. We have no weekend or holiday surcharge and no separate cleaning fee, and we do not charge tourist tax either.
+s264 ::: How can we book?
+s265 ::: In the Availability section of this page, choose your arrival, departure and number of guests, then the apartment. You can arrange booking the <strong>whole house</strong> by phone: <a>+36 70 245 8403</a>.
+s266 ::: How can we pay?
+s267 ::: At booking we ask you to pay the full amount (100%) in advance. Payment is online, by bank card, bank transfer, or with an OTP, MBH or K&amp;H SZÉP card.
+s268 ::: How can we change our booking?
+s269 ::: We know that life sometimes overrides our plans, so we try to handle booking changes as flexibly as we can. If you tell us you wish to change your booking by 10:00 at the latest on the day of arrival, we will rebook it once, within 6 months of the planned arrival date, at no extra charge.
+s270 ::: After 10:00 on the day of arrival we are unfortunately no longer able to accept changes. In that case, the amount paid is forfeited as a cancellation penalty.
+s271 ::: Arrival and keys
+s272 ::: When can we check in, and when do we have to leave?
+s273 ::: We look forward to welcoming you from 15:00 on the day of arrival, and ask you to leave the apartment by 11:00 at the latest on the day of departure. Check-in and check-out are contactless by default, so that arriving and leaving are as convenient as possible. If you would like to hand over or receive the accommodation in person and let us know in advance, we will gladly meet you.
+s274 ::: How do we get the key?
+s275 ::: To receive the code of the electronic key safe, located on the fence next to the small gate in front of the property, please upload the required personal data to the NTAK/VIZA system via the link we send before your arrival. Under the applicable laws, providing this data is mandatory for every guest. After the data has been recorded successfully, we send the key safe code by SMS on the day of arrival. In the key safe you will find the apartment keys and the remote control for the electric gate.

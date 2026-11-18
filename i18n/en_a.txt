@@ -1,0 +1,136 @@
+s000 ::: Aranyhegy Guesthouse, Szada | Romantic apartment with a covered jacuzzi
+s001 ::: Skip to content
+s002 ::: Aranyhegy
+s003 ::: Guesthouse · Szada
+s004 ::: Apartments
+s005 ::: Wellness
+s006 ::: Prices &amp; booking
+s007 ::: Reviews
+s008 ::: Contact
+s009 ::: ⟦0⟧Gift voucher
+s010 ::: HU
+s011 ::: EN
+s012 ::: From 60,000 HUF/night · even for one night
+s013 ::: Book now
+s014 ::: FAQ
+s015 ::: Gift voucher
+s016 ::: Call: +36 70 245 8403
+s017 ::: Romantic getaway for couples
+s018 ::: 30 minutes from Budapest
+s019 ::: Google · 10 guest reviews
+s020 ::: Finally, all your attention on <em>each other</em>.
+s021 ::: Panoramic terrace, jacuzzi, Finnish and infrared sauna, and never more than four guests at a time. The kind of silence you look for in the city in vain.
+s022 ::: Choose your mood.
+s023 ::: One house, two floors, two colours. Click a floor in the house cross-section: the page takes on that apartment's colour, and the booking switches to that apartment as well.
+s024 ::: Cross-section of the house: Smaragd on the upper floor, Zafír on the ground floor
+s025 ::: upper floor
+s026 ::: ground floor
+s027 ::: Szada, Aranyhegy u. 110.
+s028 ::: <i style="background:#2f7a5f"></i>Smaragd
+s029 ::: <i style="background:#3a62a8"></i>Zafír
+s030 ::: <i style="background:#d9bb88"></i>Whole house
+s031 ::: Panoramic apartment on the upper floor
+s032 ::: Smaragd Apartment
+s033 ::: 60,000 HUF
+s034 ::: per night
+s035 ::: Bedroom area
+s036 ::: Kitchen
+s037 ::: Open-plan space
+s038 ::: View from the upper terrace
+s039 ::: Bathroom
+s040 ::: The Smaragd Apartment is on the upper floor of the guesthouse: a 30 m² open-plan apartment for two guests. From its own panoramic terrace you look out over the gentle slopes of the Gödöllő Hills and the ridges of the Pilis, so your morning coffee or evening glass of wine becomes a real experience.
+s041 ::: The apartment has a 160×200 cm premium mattress, air conditioning for heating and cooling, underfloor heating, room heating and electric roller shutters for maximum comfort. A fully equipped kitchen, a spacious shower room with quality toiletries, a smart TV with streaming services, fast free Wi-Fi and board games for two make every season a relaxing one.
+s042 ::: Book Smaragd
+s043 ::: 30 m², 2 guests
+s044 ::: Free, unlimited use of the wellness area
+s045 ::: 160×200 cm bed with premium mattress
+s046 ::: Panoramic terrace
+s047 ::: Air conditioning: heating and cooling
+s048 ::: More amenities
+s049 ::: Underfloor heating
+s050 ::: Bathroom with shower
+s051 ::: Modern, very well-equipped kitchen
+s052 ::: Capsule coffee machine
+s053 ::: 55&quot; smart TV with streaming, Wi-Fi
+s054 ::: Board games
+s055 ::: Bathrobes and towels
+s056 ::: Sauna sheet
+s057 ::: Bathroom and cosmetic essentials
+s058 ::: Hotel slippers
+s059 ::: Coffee capsules
+s060 ::: Comfortable apartment on the ground floor
+s061 ::: Zafír Apartment
+s062 ::: Living area
+s063 ::: Arrival
+s064 ::: The Zafír Apartment is on the ground floor of the guesthouse. The 30 m² open-plan apartment is made for two guests, with modern furnishings and a cosy atmosphere.
+s065 ::: From the private terrace you get the same wonderful panorama over the surrounding hills and the Pilis. The equipment is the same as in the Smaragd Apartment: a premium double bed, electric roller shutters, air conditioning for heating and cooling, underfloor and room heating, a fully equipped kitchen, a capsule coffee machine, a shower room, a smart TV, fast Wi-Fi and board games for a carefree stay.
+s066 ::: Book Zafír
+s067 ::: Private terrace
+s068 ::: Fully private booking for 2 guests
+s069 ::: Whole house
+s070 ::: 90,000 HUF
+s071 ::: per night, for 2 guests<br>bookable by phone only!
+s072 ::: The house and the garden
+s073 ::: Smaragd, upper floor
+s074 ::: Zafír, ground floor
+s075 ::: Wellness, just for the two of you
+s076 ::: If you do not want to share the common areas and the wellness facilities with other guests, you can also book the entire Aranyhegy Guesthouse property exclusively for 2 guests.
+s077 ::: If both apartments are free, we close the other apartment, so no one but you stays on the property.
+s078 ::: The offer depends on both apartments being free at the same time, and can only be booked by phone.
+s079 ::: 1 apartment, 30 m²
+s080 ::: One couple (2 guests)
+s081 ::: Wellness just for you
+s082 ::: Whole garden, grill
+s083 ::: Panoramic and private terrace
+s084 ::: Free e-scooters
+s085 ::: Availability
+s086 ::: Departure
+s087 ::: Guests
+s088 ::: 1 guest
+s089 ::: 2 guests
+s090 ::: 3 guests
+s091 ::: 4 guests
+s092 ::: Apartment
+s093 ::: Either
+s094 ::: Smaragd
+s095 ::: Zafír
+s096 ::: Whole house (2 guests)
+s097 ::: Start booking
+s098 ::: <span class="dot" aria-hidden="true"></span><strong>60,000 HUF / night</strong> per apartment
+s099 ::: Bookable even for just 1 night!
+s100 ::: Tourist tax: 0 HUF
+s101 ::: <b>Online payment</b>at booking
+s102 ::: Bank card
+s103 ::: Bank transfer
+s104 ::: SZÉP Card
+s105 ::: OTP
+s106 ::: MBH
+s107 ::: K&amp;H
+s108 ::: <b>100%</b> payable with SZÉP card
+s109 ::: <b>Google</b>based on 10 guest reviews
+s110 ::: <b>Booking.com</b>based on 5 verified reviews
+s111 ::: <b>Szallas.hu</b>based on 1 guest review
+s112 ::: <b>Airbnb</b>based on 3 guest reviews
+s113 ::: What our guests write about us:
+s114 ::: We spent 4 days here and had a wonderful time. We have never stayed in such a tastefully and carefully equipped apartment, where they truly thought of EVERYTHING. ❤️ Everything here is about rest, relaxation and recharging. We especially loved the pool and the jacuzzi. I wholeheartedly recommend it to anyone who longs for rest. Thank you for everything, Péter, it was a wonderful experience. We will definitely come back! ❤️
+s115 ::: <b>Nikoletta Kormos</b> · Google review · 5/5 · translated from Hungarian
+s116 ::: The most beautiful and refined apartment we have ever stayed in, everything prepared exactly as it should be :) It was as if no one had ever been there before us, and the value for money is flawless! We will be back!
+s117 ::: <b>Kitti Leda</b> · Google review · 5/5 · translated from Hungarian
+s118 ::: Outstanding quality and equipment. 2 apartments can be rented. During our stay we were the only guests at the property. The jacuzzi, pool and sauna work perfectly. A property full of practical equipment. Quiet and beautiful natural surroundings. I wholeheartedly recommend it to anyone who wants to recharge.
+s119 ::: <b>Anett Tamás-Kovács</b> · Google review · 5/5 · translated from Hungarian
+s120 ::: More reviews on&nbsp;Google
+s121 ::: About the house
+s122 ::: We dreamed up a place where, for a few days, you leave the noise of everyday life behind.
+s123 ::: Where time slows down, the world falls quiet, and attention truly turns to rest and to each other. Where wellness experiences, thoughtfully designed spaces and a calm setting form a harmonious whole.
+s124 ::: Our apartments were not dreamed up by designers: we shaped every detail ourselves into something we would gladly return to again and again. We built it with care and love, so that from the moment you arrive you feel at home, yet somewhere special.
+s125 ::: Everything is here for you to put down the worries of daily life for a while, recharge, and give yourselves to the calm.
+s126 ::: The owners of Aranyhegy
+s127 ::: One price.
+s128 ::: No small print.
+s129 ::: <b>Bookable even for just 1 night.</b> The price is the same on weekends and public holidays.
+s130 ::: How many guests are you booking for?
+s131 ::: Prices are per night.
+s132 ::: 1-2&nbsp;guests
+s133 ::: One apartment, with shared use of the wellness area and garden.
+s134 ::: Fully private <span class="who-tag">1-2&nbsp;guests</span>
+s135 ::: The <strong>whole house</strong> is yours alone, if both apartments are free.
