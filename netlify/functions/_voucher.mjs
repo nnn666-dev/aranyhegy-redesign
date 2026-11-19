@@ -38,6 +38,21 @@ export const huDateUntil = (iso) => {
   const m = new Intl.DateTimeFormat("hu-HU", { month: "long", timeZone: "UTC" }).format(d);
   return `${d.getUTCFullYear()}. ${m} ${d.getUTCDate()}-ig`;
 };
+// "March 10, 2028" / "10 March 2028" / "10. März 2028" for the PDF validity line
+export const dateUntil = (iso, lang = "hu") => {
+  if (lang === "hu") return huDateUntil(iso);
+  const d = new Date(iso + "T00:00:00Z");
+  const loc = lang === "de" ? "de-DE" : "en-GB";
+  const out = new Intl.DateTimeFormat(loc, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(d);
+  return out;
+};
+export const VLANG = (v) => (v && (v.lang === "en" || v.lang === "de") ? v.lang : "hu");
+const PDF_T = {
+  hu: { title: "Aranyhegy ajándékutalvány ", valid: (u) => `Érvényes: ${u}`, file: "aranyhegy-ajandekutalvany-" },
+  en: { title: "Aranyhegy gift voucher ", valid: (u) => `Valid until ${u}`, file: "aranyhegy-gift-voucher-" },
+  de: { title: "Aranyhegy Geschenkgutschein ", valid: (u) => `Gültig bis ${u}`, file: "aranyhegy-geschenkgutschein-" },
+};
+export const voucherFileName = (v) => `${PDF_T[VLANG(v)].file}${v.code}.pdf`;
 export const getVoucher = (st, code) => st.get("voucher/" + code, { type: "json" });
 export const putVoucher = (st, v) => st.setJSON("voucher/" + v.code, v);
 
@@ -58,9 +73,10 @@ function asset(rel) {
 
 export async function renderVoucherPdf(v) {
   const doc = await PDFDocument.create(); doc.registerFontkit(fontkit);
-  doc.setTitle("Aranyhegy ajándékutalvány " + v.code); doc.setAuthor("Aranyhegy Apartmanház"); doc.setCreator("aranyhegyapartmanhaz.hu");
+  const L = VLANG(v), T = PDF_T[L];
+  doc.setTitle(T.title + v.code); doc.setSubject(L === "hu" ? "Ajándékutalvány" : L === "en" ? "Gift voucher" : "Geschenkgutschein"); doc.setKeywords(["Aranyhegy", "Szada", L]); doc.setAuthor("Aranyhegy Apartmanház"); doc.setCreator("aranyhegyapartmanhaz.hu");
   const page = doc.addPage([839.04, 595.2]);
-  page.drawImage(await doc.embedJpg(asset(`voucher-base-${v.pkg}.jpg`)), { x: 0, y: 0, width: 839.04, height: 595.2 });
+  page.drawImage(await doc.embedJpg(asset(L === "hu" ? `voucher-base-${v.pkg}.jpg` : `voucher-base-${L}-${v.pkg}.jpg`)), { x: 0, y: 0, width: 839.04, height: 595.2 });
   const jost = await doc.embedFont(asset("fonts/Jost-500.ttf"), { subset: true });
   const ink = rgb(0.078, 0.07, 0.055), gold = rgb(0.45, 0.35, 0.17);
   const Y = (y) => 595.2 - y * SC, X = (x) => x * SC;
@@ -71,8 +87,8 @@ export async function renderVoucherPdf(v) {
   }
   const s2 = fit(v.code, 16, (1638 - 1282) * SC);
   page.drawText(v.code, { x: X(1282), y: Y(934), size: s2, font: jost, color: ink });
-  const until = huDateUntil(v.validUntil);
-  const note = `Érvényes: ${until}`, ns = fit(note, 11, (1668 - 1418) * SC);
+  const until = dateUntil(v.validUntil, L);
+  const note = T.valid(until), ns = fit(note, 11, (1668 - 1418) * SC);
   page.drawText(note, { x: X(1668) - jost.widthOfTextAtSize(note, ns), y: Y(1128), size: ns, font: jost, color: gold });
   return await doc.save();
 }
@@ -89,7 +105,7 @@ export async function fulfilVoucher(st, code, extra = {}) {
   try {
     const pdf = await renderVoucherPdf(v);
     const m = voucherMail(v);
-    v.mail = await sendMail({ to: v.buyer.email, ...m, attachments: [{ filename: `aranyhegy-ajandekutalvany-${v.code}.pdf`, content: Buffer.from(pdf).toString("base64") }] });
+    v.mail = await sendMail({ to: v.buyer.email, ...m, attachments: [{ filename: voucherFileName(v), content: Buffer.from(pdf).toString("base64") }] });
   } catch (e) { v.mail = { status: "error", reason: String(e.message).slice(0, 160) }; console.error("voucher mail/pdf failed", v.code, e.message); }
   await putVoucher(st, v);
   v._new = true;

@@ -23,6 +23,10 @@ LD = {
 }
 
 JS = [
+ ('href="img/voucher-1.pdf"', 'href="img/voucher-de-1.pdf"', 2),
+ ('src="img/w900/voucher-1.webp"', 'src="img/w900/voucher-de-1.webp"', 1),
+ ("img.src='img/w900/voucher-'+k+'.webp'", "img.src='img/w900/voucher-de-'+k+'.webp'", 1),
+ ("lnk.href=pdf.href='img/voucher-'+k+'.pdf'", "lnk.href=pdf.href='img/voucher-de-'+k+'.pdf'", 1),
  ("Az Aranyhegy ajándékutalvány nyomtatható mintája, ", "Druckbares Muster des Aranyhegy-Geschenkgutscheins, ", 1),
  ('n.toLocaleString("hu-HU").replace(/\\s/g, ".") + " Ft"', 'n.toLocaleString("de-DE") + " Ft"', 2),
  ('mbook.textContent = "Egész ház foglalása"', 'mbook.textContent = "Ganzes Haus buchen"', 1),

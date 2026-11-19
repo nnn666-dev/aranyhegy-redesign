@@ -1,6 +1,6 @@
 // Voucher status, demo payment, validation and PDF download.
 import { store, json, bad } from "./_lib.mjs";
-import { getVoucher, voucherState, fulfilVoucher, normCode, renderVoucherPdf, putVoucher } from "./_voucher.mjs";
+import { getVoucher, voucherState, fulfilVoucher, normCode, renderVoucherPdf, putVoucher, voucherFileName } from "./_voucher.mjs";
 
 const view = (v) => ({ code: v.code, status: v.status, state: voucherState(v), pkg: v.pkg, nights: v.nights, house: v.house, validUntil: v.validUntil || null,
   demo: !!v.demo, mail: v.mail ? v.mail.status : null, recipient: v.recipient || "" });
@@ -23,7 +23,7 @@ export default async (req) => {
       v.resends = (v.resends || 0) + 1; if (v.resends > 3) return bad("limit", 429, "limit"); await putVoucher(st, v);
       const { sendMail, voucherMail } = await import("./_mail.mjs");
       const pdf = await renderVoucherPdf(v);
-      v.mail = await sendMail({ to: v.buyer.email, ...voucherMail(v), attachments: [{ filename: `aranyhegy-ajandekutalvany-${v.code}.pdf`, content: Buffer.from(pdf).toString("base64") }] });
+      v.mail = await sendMail({ to: v.buyer.email, ...voucherMail(v), attachments: [{ filename: voucherFileName(v), content: Buffer.from(pdf).toString("base64") }] });
       await putVoucher(st, v); return json({ ok: true, mail: v.mail.status });
     }
     return bad("action", 400, "action");
@@ -40,7 +40,7 @@ export default async (req) => {
   if (act === "pdf") {
     if (v.status === "pending" || v.status === "failed") return bad("not paid", 409, "unpaid");
     const pdf = await renderVoucherPdf(v);
-    return new Response(pdf, { headers: { "content-type": "application/pdf", "content-disposition": `inline; filename="aranyhegy-ajandekutalvany-${v.code}.pdf"`, "cache-control": "no-store" } });
+    return new Response(pdf, { headers: { "content-type": "application/pdf", "content-disposition": `inline; filename="${voucherFileName(v)}"`, "cache-control": "no-store" } });
   }
   return json({ ok: true, voucher: view(v) });
 };

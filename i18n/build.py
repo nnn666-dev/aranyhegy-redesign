@@ -92,6 +92,10 @@ def tr_ld(node, plain_map, miss, ld=None, prefix="/en/"):
 
 
 JS = [  # (old, new, expected count) applied AFTER segment translation
+ ('href="img/voucher-1.pdf"', 'href="img/voucher-en-1.pdf"', 2),
+ ('src="img/w900/voucher-1.webp"', 'src="img/w900/voucher-en-1.webp"', 1),
+ ("img.src='img/w900/voucher-'+k+'.webp'", "img.src='img/w900/voucher-en-'+k+'.webp'", 1),
+ ("lnk.href=pdf.href='img/voucher-'+k+'.pdf'", "lnk.href=pdf.href='img/voucher-en-'+k+'.pdf'", 1),
  ("Az Aranyhegy ajándékutalvány nyomtatható mintája, ", "Printable sample of the Aranyhegy gift voucher, ", 1),
  ('n.toLocaleString("hu-HU").replace(/\\s/g, ".") + " Ft"', 'n.toLocaleString("en-US") + " HUF"', 2),
  ('mbook.textContent = "Egész ház foglalása"', 'mbook.textContent = "Book whole house"', 1),
