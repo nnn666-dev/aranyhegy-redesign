@@ -49,8 +49,8 @@ def plain(x):
 
 
 LD = {
- "Két apartman pároknak Szadán, Budapesttől kb. 30 percre: fedett jakuzzi, finn- és infraszauna, 2400 m²-es kert. Már egy éjszakára is foglalható.":
- "Two apartments for couples in Szada, about 30 minutes from Budapest: covered jacuzzi, Finnish and infrared sauna, a 2,400 m² garden. Bookable even for one night.",
+ "Két apartman pároknak Szadán, Budapesttől kb. 30 percre: fedett jakuzzi, finn- és infraszauna egész évben, 2400 m²-es kert. Már egy éjszakára is foglalható, SZÉP-kártyával is fizethető.":
+ "Two apartments for couples in Szada, about 30 minutes from Budapest: covered jacuzzi, Finnish and infrared sauna all year round, a 2,400 m² garden. Bookable even for one night, SZÉP card accepted.",
  "Smaragd (emelet)": "Smaragd (upper floor)", "Zafír (földszint)": "Zafír (ground floor)",
  "Fedett kültéri jakuzzi (közös)": "Covered outdoor jacuzzi (shared)", "Finn szauna": "Finnish sauna", "Infraszauna": "Infrared sauna",
  "Klíma (fűtés és hűtés)": "Air conditioning (heating and cooling)", "Padlófűtés": "Underfloor heating", "Konyha": "Kitchen",
@@ -105,8 +105,8 @@ JS = [  # (old, new, expected count) applied AFTER segment translation
  ("<strong>Két pár, 4 vendég: 2 × 60.000 = 120.000 Ft / éj</strong>", "<strong>Two couples, 4 guests: 2 × 60,000 = 120,000 HUF / night</strong>", 1),
  ("' éj: <strong>'", "(n > 1 ? ' nights: <strong>' : ' night: <strong>')", 3),
  ("<span>Mindkét apartmant foglaljátok. Idegenforgalmi adó: 0 Ft</span>", "<span>Book both apartments. Tourist tax: 0 HUF</span>", 1),
- ("<strong>Teljesen privát foglalás 2 fő részére: 90.000 Ft / éj</strong>", "<strong>Fully private booking for 2 guests: 90,000 HUF / night</strong>", 1),
- ("Az ajánlat a két apartman egyidejű szabad kapacitásának függvényében vehető igénybe, és kizárólag telefonos elérhetőségünkön tudjátok lefoglalni: ", "The offer depends on both apartments being free at the same time, and can only be booked by phone: ", 1),
+ ("<strong>Az egész ház csak kettőtöknek: 90.000 Ft / éj</strong>", "<strong>The whole house just for the two of you: 90,000 HUF / night</strong>", 1),
+ ("Akkor foglalható, ha mindkét apartman szabad a kiválasztott napokon. Hívjatok vagy írjatok, hamar válaszolunk.", "Bookable when both apartments are free on your dates. Call or write to us and we reply soon.", 1),
  ("<strong>60.000 Ft / éj</strong> apartmanonként</span>", "<strong>60,000 HUF / night</strong> per apartment</span>", 1),
  ("</strong>, idegenforgalmi adó 0 Ft</span>", "</strong>, tourist tax 0 HUF</span>", 1),
  ("<strong>Már 1 éjszakára is foglalható!</strong></span><span>Idegenforgalmi adó: 0 Ft</span>", "<strong>Bookable even for just 1 night!</strong></span><span>Tourist tax: 0 HUF</span>", 1),
@@ -116,8 +116,9 @@ JS = [  # (old, new, expected count) applied AFTER segment translation
  ('"Válasszátok ki a távozás napját (legalább 1 éjszaka)."', '"Please choose your departure date (at least 1 night)."', 1),
  ('"Két pár, mindkét apartman: "', '"Two couples, both apartments: "', 1),
  ('"Teljesen privát foglalás 2 fő részére: "', '"Fully private booking for 2 guests: "', 1),
- ("kizárólag telefonos elérhetőségünkön tudjátok lefoglalni. ", "can only be booked by phone. ", 1),
+ ("telefonon vagy üzenetben tudjátok lefoglalni. ", "can be booked by phone or message. ", 1),
  (">Hívás: +36 70 245 8403</a>", ">Call: +36 70 245 8403</a>", 1),
+ ('data-inq-book>Ajánlatot kérek</button>', 'data-inq-book>Request an offer</button>', 2),
  ('<a class="btn btn-gold" href="https://aranyhegyapartmanhaz.hu/#book">Online foglalás</a>', '<a class="btn btn-gold" href="https://aranyhegyapartmanhaz.hu/en/#book">Book online</a>', 1),
 ]
 

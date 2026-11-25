@@ -30,7 +30,7 @@ const newA = base(faqA, "hu").replace(/\.$/, "") + ", ez a próbaszöveg.";
 r = render("hu", { [faqA.id]: { b: faqA.h, hu: newA } });
 const ld = [...r.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 const faq = ld.find((d) => d["@type"] === "FAQPage");
-ok(faq && faq.mainEntity.length === 24, "FAQPage still has 24 questions and parses");
+ok(faq && faq.mainEntity.length === 28, "FAQPage still has 28 questions and parses");
 ok(faq.mainEntity.some((e) => e.acceptedAnswer.text === newA) || faq.mainEntity.some((e) => e.acceptedAnswer.text.includes("65 próba")), "FAQ JSON-LD answer follows the edited visible answer");
 // JSON-LD injection
 const evil = '"}</script><script>alert(1)</script>';

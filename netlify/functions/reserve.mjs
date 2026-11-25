@@ -5,6 +5,8 @@ import {
   PRICE, APTS, HOLD_MIN, parseDay, isoDay, todayBudapest, nightsBetween, confirmBooking,
 } from "./_lib.mjs";
 import { getVoucher, putVoucher, voucherState, normCode } from "./_voucher.mjs"; // STAGE-V1
+import { cms, ip, allow, rnd } from "./_cms.mjs"; // STAGE196: offline-payment requests
+import { sendMail } from "./_mail.mjs";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 function checkVoucherStay(inn, out) {
@@ -41,13 +43,51 @@ export default async (req) => {
   if (vch && body.in > vch.validUntil) return bad("Arrival after the voucher's validity", 400, "voucher_after");
   if (vch && !vch.house && body.apt === "haz") return bad("Voucher is for one apartment", 400, "voucher_apt");
 
-  const name = clean(body.name, 80), email = clean(body.email, 120), phone = clean(body.phone, 30);
+  // STAGE196: split name (last/first), billing address, company, payment method
+  const lastN = clean(body.lastName, 60), firstN = clean(body.firstName, 60);
+  const name = (lastN || firstN) ? (lang === "hu" ? `${lastN} ${firstN}` : `${firstN} ${lastN}`).trim() : clean(body.name, 80);
+  const email = clean(body.email, 120), phone = clean(body.phone, 40);
+  if ((lastN || firstN) && (lastN.length < 1 || firstN.length < 1)) return bad("Name required", 400, lastN ? "first_name" : "last_name");
   if (name.length < 2) return bad("Name required", 400, "name");
   if (!EMAIL.test(email)) return bad("Valid email required", 400, "email");
   if (phone.replace(/\D/g, "").length < 7) return bad("Valid phone required", 400, "phone");
   if (body.terms !== true) return bad("Terms must be accepted", 400, "terms");
+  let billing = null;
+  if (body.billing && typeof body.billing === "object") {
+    const b = body.billing, country = String(b.country || "").toUpperCase();
+    if (!/^[A-Z]{2}$/.test(country)) return bad("Country required", 400, "country");
+    const zip = clean(b.zip, 12), city = clean(b.city, 60), street = clean(b.street, 100);
+    if (country === "HU" ? !/^\d{4}$/.test(zip) : zip.length < 3) return bad("Postal code invalid", 400, "zip");
+    if (city.length < 2) return bad("City required", 400, "city");
+    if (street.length < 3) return bad("Street required", 400, "street");
+    billing = { country, zip, city, street };
+    if (b.company === true) {
+      const companyName = clean(b.companyName, 100), vat = clean(b.vat, 24);
+      if (companyName.length < 2) return bad("Company name required", 400, "company");
+      if (vat.replace(/[\s-]/g, "").length < 8) return bad("VAT number required", 400, "vat");
+      billing.company = true; billing.companyName = companyName; billing.vat = vat;
+    }
+  }
+  const payMethod = ["card", "transfer", "szep"].includes(body.payMethod) ? body.payMethod : "card";
+  const szepType = payMethod === "szep" ? String(body.szepType || "") : "";
+  if (payMethod === "szep" && !["otp", "mbh", "kh"].includes(szepType)) return bad("SZEP card type required", 400, "szep");
 
   const st = store();
+  if (!vch && payMethod !== "card") {                           // STAGE196: bank transfer / SZEP card -> a booking request, dates are NOT locked
+    if (!(await allow("req-ip:" + ip(req), 6, 3600e3)) || !(await allow("req-all", 120, 86400e3))) return json({ ok: false, error: "rate" }, 429);
+    const free = await freeApartments(st, c.nights, "haz-any");
+    const okApt = wantApt === "haz-any" ? free.length > 0 : wantApt === "haz" ? free.length === 2 : free.includes(wantApt);
+    if (!okApt) return json({ ok: false, error: "unavailable" }, 409);
+    const rid = "AJ-" + rnd(4).toUpperCase(), created = new Date().toISOString();
+    const rec = { id: rid, kind: "booking", apt: wantApt, in: body.in, out: body.out, nights: c.n, guests: Number(body.guests), amount: PRICE * c.n, pay: payMethod === "szep" ? "szep-" + szepType : "transfer",
+      name, email, phone, message: clean(body.note, 400), billing, lang, free: free.length === 2 ? "both" : "one", status: "new", created };
+    await cms().setJSON("inq/" + created + "-" + rid, rec);
+    const to = (process.env.OWNER_EMAIL || (process.env.ADMIN_EMAIL || "").split(",")[0] || "").trim();
+    let mail = { status: "skipped" };
+    if (to) mail = await sendMail({ to, subject: `Új foglalási kérelem (${rec.pay}): ${body.in} → ${body.out}`, text: `Foglalási kérelem ${rid}\n${name}\n${email} ${phone}\n${wantApt}, ${c.n} éj, ${rec.amount} Ft\nFizetés: ${rec.pay}\n${billing ? [billing.zip, billing.city, billing.street].join(", ") : ""}`, html: `<p>Foglalási kérelem <b>${rid}</b></p><p>${name}<br>${email} ${phone}</p><p>${wantApt}, ${c.n} éj, ${rec.amount} Ft<br>Fizetés: ${rec.pay}</p>` });
+    await cms().setJSON("inq/" + created + "-" + rid, { ...rec, mail: mail.status });
+    return json({ ok: true, mode: "request", id: rid, apt: wantApt, amount: rec.amount });
+  }
   const id = newId(), token = newToken();
   const amount = vch ? 0 : PRICE * c.n;                         // never trust the client price; voucher covers the stay
   let apt = null;
@@ -76,7 +116,7 @@ export default async (req) => {
 
   const booking = {
     id, token, status: "pending", apt, in: body.in, out: body.out, nights: c.n, guests: Number(body.guests),
-    amount, currency: "HUF", lang, guest: { name, email, phone, note: clean(body.note, 400) },
+    amount, currency: "HUF", lang, guest: { name, email, phone, note: clean(body.note, 400), billing: billing || undefined, payMethod: vch ? "voucher" : payMethod, terms2: body.terms2 === true },
     created: new Date().toISOString(), demo: !process.env.STRIPE_SECRET_KEY, voucher: vcode || undefined,
   };
   await putBooking(st, booking);

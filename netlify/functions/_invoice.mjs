@@ -6,10 +6,13 @@ import { putBooking } from "./_lib.mjs";
 
 const esc = (s) => String(s).replace(/[<>&"']/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&apos;" }[c]));
 
+const countryHu = (cc) => { try { return cc ? new Intl.DisplayNames(["hu"], { type: "region" }).of(cc) : "Magyarország"; } catch { return "Magyarország"; } };
+
 export function buildXml(b, key) {
   const today = new Date().toISOString().slice(0, 10);
   const net = b.amount;                       // owner decides VAT treatment; default: VAT exempt line
   const vat = process.env.SZAMLAZZ_VAT || "AAM";
+  const bl = (b.guest && b.guest.billing) || {};
   return `<?xml version="1.0" encoding="UTF-8"?>
 <xmlszamla xmlns="http://www.szamlazz.hu/xmlszamla" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <beallitasok>
@@ -24,8 +27,8 @@ export function buildXml(b, key) {
   </fejlec>
   <elado></elado>
   <vevo>
-    <nev>${esc(b.guest.name)}</nev><orszag>Magyarország</orszag><irsz>0000</irsz><telepules>-</telepules><cim>-</cim>
-    <email>${esc(b.guest.email)}</email><sendEmail>true</sendEmail><telefonszam>${esc(b.guest.phone)}</telefonszam>
+    <nev>${esc(bl.company ? bl.companyName : b.guest.name)}</nev><orszag>${esc(countryHu(bl.country))}</orszag><irsz>${esc(bl.zip || "0000")}</irsz><telepules>${esc(bl.city || "-")}</telepules><cim>${esc(bl.street || "-")}</cim>
+    <email>${esc(b.guest.email)}</email><sendEmail>true</sendEmail>${bl.company && bl.vat ? `<adoszam>${esc(bl.vat)}</adoszam>` : ""}<telefonszam>${esc(b.guest.phone)}</telefonszam>
   </vevo>
   <tetelek><tetel>
     <megnevezes>${esc(`Szállás ${b.in} - ${b.out}, ${b.nights} éj`)}</megnevezes>

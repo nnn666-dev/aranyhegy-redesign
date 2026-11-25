@@ -7,8 +7,8 @@ from build import fix_tags, plain, tr_ld, SITE
 ROOT = lib.ROOT
 
 LD = {
- "Két apartman pároknak Szadán, Budapesttől kb. 30 percre: fedett jakuzzi, finn- és infraszauna, 2400 m²-es kert. Már egy éjszakára is foglalható.":
- "Zwei Apartments für Paare in Szada, etwa 30 Minuten von Budapest: überdachter Whirlpool, finnische Sauna und Infrarotsauna, 2400 m² Garten. Schon ab einer Nacht buchbar.",
+ "Két apartman pároknak Szadán, Budapesttől kb. 30 percre: fedett jakuzzi, finn- és infraszauna egész évben, 2400 m²-es kert. Már egy éjszakára is foglalható, SZÉP-kártyával is fizethető.":
+ "Zwei Apartments für Paare in Szada, etwa 30 Minuten von Budapest: überdachter Whirlpool, finnische Sauna und Infrarotsauna ganzjährig, 2400 m² Garten. Schon ab einer Nacht buchbar, SZÉP-Karte wird akzeptiert.",
  "Smaragd (emelet)": "Smaragd (Obergeschoss)", "Zafír (földszint)": "Zafír (Erdgeschoss)",
  "Fedett kültéri jakuzzi (közös)": "Überdachter Außen-Whirlpool (gemeinsam)", "Finn szauna": "Finnische Sauna", "Infraszauna": "Infrarotsauna",
  "Klíma (fűtés és hűtés)": "Klimaanlage (Heizen und Kühlen)", "Padlófűtés": "Fußbodenheizung", "Konyha": "Küche",
@@ -36,8 +36,8 @@ JS = [
  ("<strong>Két pár, 4 vendég: 2 × 60.000 = 120.000 Ft / éj</strong>", "<strong>Zwei Paare, 4 Gäste: 2 × 60.000 = 120.000 Ft / Nacht</strong>", 1),
  ("' éj: <strong>'", "(n > 1 ? ' Nächte: <strong>' : ' Nacht: <strong>')", 3),
  ("<span>Mindkét apartmant foglaljátok. Idegenforgalmi adó: 0 Ft</span>", "<span>Ihr bucht beide Apartments. Kurtaxe: 0 Ft</span>", 1),
- ("<strong>Teljesen privát foglalás 2 fő részére: 90.000 Ft / éj</strong>", "<strong>Komplett privat für 2 Gäste: 90.000 Ft / Nacht</strong>", 1),
- ("Az ajánlat a két apartman egyidejű szabad kapacitásának függvényében vehető igénybe, és kizárólag telefonos elérhetőségünkön tudjátok lefoglalni: ", "Das Angebot gilt nur, wenn beide Apartments gleichzeitig frei sind, und ist ausschließlich telefonisch buchbar: ", 1),
+ ("<strong>Az egész ház csak kettőtöknek: 90.000 Ft / éj</strong>", "<strong>Das ganze Haus nur für euch zwei: 90.000 Ft / Nacht</strong>", 1),
+ ("Akkor foglalható, ha mindkét apartman szabad a kiválasztott napokon. Hívjatok vagy írjatok, hamar válaszolunk.", "Buchbar, wenn beide Apartments an den gewählten Tagen frei sind. Ruft an oder schreibt uns, wir antworten bald.", 1),
  ("<strong>60.000 Ft / éj</strong> apartmanonként</span>", "<strong>60.000 Ft / Nacht</strong> pro Apartment</span>", 1),
  ("</strong>, idegenforgalmi adó 0 Ft</span>", "</strong>, Kurtaxe 0 Ft</span>", 1),
  ("<strong>Már 1 éjszakára is foglalható!</strong></span><span>Idegenforgalmi adó: 0 Ft</span>", "<strong>Schon ab 1 Nacht buchbar!</strong></span><span>Kurtaxe: 0 Ft</span>", 1),
@@ -47,8 +47,9 @@ JS = [
  ('"Válasszátok ki a távozás napját (legalább 1 éjszaka)."', '"Bitte wählt den Abreisetag (mindestens 1 Nacht)."', 1),
  ('"Két pár, mindkét apartman: "', '"Zwei Paare, beide Apartments: "', 1),
  ('"Teljesen privát foglalás 2 fő részére: "', '"Komplett privat für 2 Gäste: "', 1),
- ("kizárólag telefonos elérhetőségünkön tudjátok lefoglalni. ", "ist ausschließlich telefonisch buchbar. ", 1),
+ ("telefonon vagy üzenetben tudjátok lefoglalni. ", "ist telefonisch oder per Nachricht buchbar. ", 1),
  (">Hívás: +36 70 245 8403</a>", ">Anrufen: +36 70 245 8403</a>", 1),
+ ('data-inq-book>Ajánlatot kérek</button>', 'data-inq-book>Angebot anfragen</button>', 2),
  ('<a class="btn btn-gold" href="https://aranyhegyapartmanhaz.hu/#book">Online foglalás</a>', '<a class="btn btn-gold" href="https://aranyhegyapartmanhaz.hu/de/#book">Online buchen</a>', 1),
  # language state of the booking / voucher scripts
  ('L = d.documentElement.lang === "en" ? "en" : "hu";', 'L = "de";', 1),
@@ -64,7 +65,7 @@ T_DE = '''    de: { title: "Buchung", checking: "Freie Termine werden geprüft�
       e_gone: "Jemand hat diese Tage gerade gebucht. Bitte wählt andere Termine.", e_net: "Die Verbindung ist fehlgeschlagen. Versucht es erneut oder ruft uns an: +36 70 245 8403.", e_pay: "Die Zahlung ist gerade nicht verfügbar. Bitte ruft uns an: +36 70 245 8403.",
       demoTitle: "Zahlung", demoBanner: "DEMO-MODUS: keine echte Zahlung, keine Abbuchung. Sobald Stripe angebunden ist, erscheint hier die Kartenzahlung.", demoPay: "Zahlung simulieren", processing: "Wird verarbeitet…",
       okTitle: "Buchung bestätigt", okRef: "Buchungsnummer", okText: "Danke! Die Bestätigung senden wir per E-Mail. Anreise ab 15:00 Uhr, Abreise bis 11:00 Uhr.", okDemo: "Dies war eine DEMO-Buchung, es wurde keine echte Buchung angelegt.",
-      waitTitle: "Zahlung wird verarbeitet", waitText: "Wir warten auf die Bestätigung der Bank, das dauert einige Sekunden.", cancelled: "Die Zahlung wurde abgebrochen. Wir halten die Tage noch kurz frei, ihr müsst die Buchung aber neu starten.", expired: "Die Reservierung ist abgelaufen. Bitte startet die Buchung neu." }
+      waitTitle: "Zahlung wird verarbeitet", waitText: "Wir warten auf die Bestätigung der Bank, das dauert einige Sekunden.", cancelled: "Die Zahlung wurde abgebrochen. Wir halten die Tage noch kurz frei, ihr müsst die Buchung aber neu starten.", expired: "Die Reservierung ist abgelaufen. Bitte startet die Buchung neu.", secC: "Kontaktdaten", co: "Als Firma buchen", coN: "Firmenname", vat: "Steuernummer", ln: "Nachname", fn: "Vorname", em: "E-Mail-Adresse", ctry: "Land", zip: "Postleitzahl", city: "Ort", cityPh: "Postleitzahl eingeben", street: "Straße, Hausnummer", tel: "Telefonnummer", disc: "Rabattcode", act: "Aktivieren", secP: "Zahlungsarten", pCard: "Zahlung per Bankkarte", cardT: "Online-Zahlung mit Bank- oder Kreditkarte", cardS: "Schnelle und sichere Zahlung über Stripe", pOther: "Zahlung auf andere Weise", otherN: "Weitere Informationen findet ihr in der Bestätigungs-E-Mail", trf: "Zahlung per Banküberweisung", szepT: "Zahlung mit SZÉP-Karte", szep: "SZÉP-Kartentyp", szepPh: "Kartentyp wählen…", c1a: "Ich akzeptiere die ", c1b: "Datenschutzerklärung", c2a: "Ich akzeptiere die ", c2b: "AGB", c2c: ", die ", c2d: "Hausordnung", c2e: " und die ", c2f: "Buchungsbedingungen", fin: "Buchung abschließen", finCard: "Nach dem Absenden der Buchungsanfrage leiten wir euch zur Online-Zahlung weiter. Der volle Betrag ({x}) wird nach Eingabe der Kartendaten abgebucht.", finOff: "Nach dem Absenden erfassen wir eure Buchungsanfrage und senden die Zahlungsinformationen per E-Mail oder Telefon. Die Tage sind bis zur Zahlung nicht reserviert.", finVou: "Der Gutschein deckt den vollen Betrag, eine Zahlung ist nicht nötig.", e_ln: "Bitte gebt den Nachnamen an.", e_fn: "Bitte gebt den Vornamen an.", e_co: "Bitte gebt den Firmennamen an.", e_vat: "Bitte gebt die Steuernummer an.", e_ctry: "Bitte wählt ein Land.", e_zip: "Bitte gebt eine gültige Postleitzahl an.", e_city: "Bitte gebt den Ort an.", e_street: "Bitte gebt Straße und Hausnummer an.", e_szep: "Bitte wählt einen SZÉP-Kartentyp.", e_t1: "Die Datenschutzerklärung muss akzeptiert werden.", e_t2: "AGB, Hausordnung und Buchungsbedingungen müssen akzeptiert werden.", e_dc: "Bitte gebt den Code an.", e_rate: "Gerade zu viele Anfragen. Bitte ruft uns an: +36 70 245 8403.", d_ok: "Aktiviert. Der Gutschein deckt den Betrag.", reqT: "Buchungsanfrage erfasst", reqX: "Danke! Die Zahlungsinformationen und die Bestätigung senden wir per E-Mail oder Telefon. Die Tage sind bis zur Zahlung nicht reserviert." }
 '''
 V_DE = '''    de: {
       oTitle: "Geschenkgutschein bestellen", rTitle: "Gutschein einlösen", pack: "Paket", valid: "Gültigkeit", validNote: "12 Monate ab Zahlung",
@@ -102,7 +103,7 @@ def build(write=True):
         out = out.replace(old, new)
     # German dialog tables (inserted after the English ones)
     for anchor, add in (
-        ('expired: "The hold has expired. Please start the booking again." }\n  }[L];', T_DE),
+        ('reqX: "Thank you! We send the payment details and the confirmation by e-mail or phone. The dates are not held until payment." }\n  }[L];', T_DE),
         ('voucher_after: "Your arrival must fall within the voucher\'s validity." } }\n  }[L];', V_DE)):
         if out.count(anchor) != 1: notes["js_fail"].append(("TABLE:" + anchor[:40], out.count(anchor), 1)); continue
         head = anchor.rsplit("\n  }[L];", 1)[0]

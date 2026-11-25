@@ -71,7 +71,7 @@ export function preflight(ov) {
     if (count(html, "<h1") !== 1) problems.push(`${l.toUpperCase()}: pontosan egy főcímnek (H1) kell lennie.`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
     if (lds.length !== 3) problems.push(`${l.toUpperCase()}: hiányzik egy strukturált adat blokk.`);
-    for (const m of lds) { try { const d = JSON.parse(m[1]); if (d["@type"] === "FAQPage" && d.mainEntity.length !== 24) problems.push(`${l.toUpperCase()}: a GYIK-ban nem 24 kérdés van.`); } catch { problems.push(`${l.toUpperCase()}: a strukturált adat hibás.`); } }
+    for (const m of lds) { try { const d = JSON.parse(m[1]); if (d["@type"] === "FAQPage" && d.mainEntity.length !== 28) problems.push(`${l.toUpperCase()}: a GYIK-ban nem 28 kérdés van.`); } catch { problems.push(`${l.toUpperCase()}: a strukturált adat hibás.`); } }
     for (const w of ["kupola", "dome "]) if (html.toLowerCase().replace(/img\/[^"' )]*/g, "").includes(w) && !def.toLowerCase().replace(/img\/[^"' )]*/g, "").includes(w)) problems.push(`${l.toUpperCase()}: tiltott kifejezés került az oldalra („${w.trim()}”).`);
   }
   return problems;
@@ -231,6 +231,21 @@ export default async (req, ctx) => {
     const l = await cms().list({ prefix: "audit/" }); const out = [];
     for (const k of l.blobs.slice(-60).reverse()) { const v = await cms().get(k.key, { type: "json" }); if (v) out.push(v); }
     return json({ ok: true, log: out });
+  }
+
+  if (route === "inquiries") {
+    const l = await cms().list({ prefix: "inq/" }); const out = [];
+    for (const k of l.blobs.slice(-100).reverse()) { const v = await cms().get(k.key, { type: "json" }); if (v) out.push(v); }
+    return json({ ok: true, list: out, news: out.filter((x) => x.status === "new").length });
+  }
+  if (route === "inquiry-status" && req.method === "POST") {
+    const b = await body(); const id = String(b.id || ""), st = b.status === "done" ? "done" : "new";
+    if (!/^AJ-[0-9A-F]{8}$/.test(id)) return err("Ismeretlen azonosító.", 400, "bad_id");
+    const l = await cms().list({ prefix: "inq/" }); const k = l.blobs.find((x) => x.key.endsWith("-" + id));
+    if (!k) return err("Nem található.", 404, "not_found");
+    const v = await cms().get(k.key, { type: "json" }); v.status = st; await cms().setJSON(k.key, v);
+    await audit(who, "inquiry-" + st, { id });
+    return json({ ok: true });
   }
 
   return err("Nincs ilyen művelet.", 404, "not_found");

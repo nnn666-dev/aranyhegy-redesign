@@ -113,6 +113,8 @@
     var hr = new Date().getHours(); var hi = hr < 10 ? "Jó reggelt!" : hr < 18 ? "Üdvözlünk!" : "Jó estét!";
     w.appendChild(el("h1", { class: "hello", text: hi }));
     w.appendChild(el("div", { class: "status " + (n ? "wait" : "ok") }, [el("div", {}, [el("b", { text: n ? n + " módosítás vár közzétételre" : "A weboldal naprakész" }), el("span", { text: n ? "A vendégek ezeket még nem látják." : "Utolsó közzététel: " + fmtTs(S.c.pubTs) + "." })])]));
+    var inqBox = el("div", {}); w.appendChild(inqBox);
+    api("inquiries").then(function (r) { if (r && r.ok && r.news) inqBox.appendChild(el("div", { class: "status wait" }, [el("div", {}, [el("b", { text: r.news + " új ajánlatkérés" }), el("span", { text: "Egész ház vagy 3-4 fős érdeklődés vár válaszra." })]), el("button", { class: "btn s", type: "button", text: "Megnézem", onclick: function () { S.view = "more"; S.sub = "inq"; render(); } })])); });
     w.appendChild(el("p", { class: "lbl", text: "Mit szeretnél módosítani?" }));
     var g = el("div", { class: "grid" });
     var tiles = [["pen", "Egy mondatot", "Bármelyik szöveg az oldalon", function () { S.view = "edit"; S.sec = null; render(); }],
@@ -255,11 +257,12 @@
 
   function viewMore() {
     var w = el("div", { class: "wrap" });
+    if (S.sub === "inq") return viewInq(w);
     if (S.sub === "history") return viewHistory(w);
     if (S.sub === "log") return viewLog(w);
     if (S.sub === "help") return viewHelp(w);
     var l = el("div", { class: "list" });
-    [["Előzmények és visszaállítás", "Korábbi közzétételek", "history"], ["Napló", "Ki mit módosított", "log"], ["Segítség", "Hogyan működik?", "help"]].forEach(function (x) {
+    [["Ajánlatkérések", "Egész ház és 3-4 fős érdeklődések", "inq"], ["Előzmények és visszaállítás", "Korábbi közzétételek", "history"], ["Napló", "Ki mit módosított", "log"], ["Segítség", "Hogyan működik?", "help"]].forEach(function (x) {
       l.appendChild(el("button", { class: "row", type: "button", onclick: function () { S.sub = x[2]; render(); } }, [el("div", { class: "t" }, [el("b", { text: x[0] }), el("small", { text: x[1] })]), el("span", { class: "chev", text: "›" })])); });
     w.appendChild(l);
     w.appendChild(el("div", { class: "btns" }, [el("button", { class: "btn", type: "button", text: "Kijelentkezés", onclick: function () { api("logout", {}).then(function () { S.me = null; S.csrf = ""; render(); }); } })]));
@@ -276,6 +279,34 @@
         (v.changes || []).slice(0, 3).forEach(function (x) { c.appendChild(el("p", { class: "muted", text: "• " + x.label + ": " + x.to.slice(0, 70) })); });
         if (i > 0) c.appendChild(el("div", { class: "btns" }, [el("button", { class: "btn s", type: "button", text: "Megnézem piszkozatként", onclick: function () { api("restore", { n: v.n }).then(function (q) { if (q.ok) { S.c.draft = q.draft; S.c.rev = q.rev; go("preview", true); } else toast(q.message); }); } }), el("button", { class: "btn s", type: "button", text: "Visszaállítás és közzététel", onclick: function () { modal("Visszaállítás", [el("p", { text: "Az oldal visszaáll a(z) " + v.n + ". változatra (" + fmtTs(v.ts) + "), és azonnal élő lesz. A mostani változat megmarad az előzményekben." })], [{ text: "Visszaállítom", cls: "p", fn: function () { api("restore", { n: v.n, publish: true }).then(function (q) { if (q.ok) { load().then(function () { toast("Visszaállítva és közzétéve."); }); } else toast((q.problems || [q.message]).join(" ")); }); } }, { text: "Mégsem" }]); } })]));
         box.appendChild(c); }); });
+    return w;
+  }
+  function viewInq(w) {
+    sub(w, "Ajánlatkérések"); var box = el("div", {}, [el("p", { class: "muted", text: "Betöltés…" })]); w.appendChild(box);
+    var K = { house: "Egész ház, 2 fő", four: "Két apartman, 3-4 fő", booking: "Foglalási kérelem" }, PAY = { transfer: "Banki átutalás", "szep-otp": "SZÉP kártya (OTP)", "szep-mbh": "SZÉP kártya (MBH)", "szep-kh": "SZÉP kártya (K&H)" }, FREE = { both: "Mindkét apartman szabad", one: "Csak az egyik apartman szabad", none: "Nincs szabad apartman", unknown: "" };
+    api("inquiries").then(function (r) {
+      box.textContent = ""; if (!r.ok || !r.list.length) { box.appendChild(el("div", { class: "empty", text: "Még nem érkezett ajánlatkérés." })); return; }
+      r.list.forEach(function (x) {
+        var c = el("div", { class: "card" + (x.status === "new" ? " new" : "") });
+        c.appendChild(el("p", { class: "lbl", text: (x.status === "new" ? "ÚJ · " : "Kezelve · ") + x.id + " · " + fmtTs(Date.parse(x.created)) }));
+        c.appendChild(el("b", { text: (K[x.kind] || x.kind) + ": " + x.in + " → " + x.out + " (" + x.nights + " éj)" }));
+        if (FREE[x.free]) c.appendChild(el("p", { class: "muted", text: FREE[x.free] }));
+        c.appendChild(el("p", { text: x.name }));
+        var links = el("p", {});
+        if (x.phone) links.appendChild(el("a", { href: "tel:" + x.phone.replace(/[^\d+]/g, ""), text: x.phone }));
+        if (x.phone && x.email) links.appendChild(document.createTextNode(" · "));
+        if (x.email) links.appendChild(el("a", { href: "mailto:" + x.email, text: x.email }));
+        c.appendChild(links);
+        if (x.kind === "booking") {
+          c.appendChild(el("p", { text: (x.apt || "") + " · " + (x.guests || "") + " fő · " + (x.amount || 0).toLocaleString("hu-HU") + " Ft · " + (PAY[x.pay] || x.pay || "") }));
+          if (x.billing) c.appendChild(el("p", { class: "muted", text: (x.billing.company ? x.billing.companyName + " (" + x.billing.vat + "), " : "") + [x.billing.country, x.billing.zip, x.billing.city, x.billing.street].join(", ") }));
+        }
+        if (x.message) c.appendChild(el("p", { class: "muted", text: x.message }));
+        c.appendChild(el("div", { class: "btns" }, [el("button", { class: "btn s", type: "button", text: x.status === "new" ? "Kezelve" : "Újra megnyitom", onclick: function () {
+          api("inquiry-status", { id: x.id, status: x.status === "new" ? "done" : "new" }).then(function (q) { if (q.ok) render(); else toast(q.message || "Nem sikerült."); }); } })]));
+        box.appendChild(c);
+      });
+    });
     return w;
   }
   function viewLog(w) {
