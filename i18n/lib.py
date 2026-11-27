@@ -4,7 +4,7 @@ so a changed HU string is reported as untranslated instead of silently drifting.
 import os, re, json
 from html.parser import HTMLParser
 
-ROOT = os.path.expanduser("~/aranyhegy-redesign-2027")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root, wherever the repo is cloned
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 INLINE = {"a", "b", "strong", "em", "i", "span", "small", "u", "sup", "sub", "br", "wbr", "abbr", "mark", "time", "s", "tspan"}
 OPAQUE = {"svg", "img", "input", "picture", "video", "canvas", "iframe", "select"}

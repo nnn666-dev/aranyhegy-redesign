@@ -2,7 +2,7 @@
 Editable spans (plain text segments, image alts, meta content, <title>) are replaced with markers.
 Rendering the template with default content MUST be byte-identical to the dist files (verified here)."""
 import os, re, sys, json, html, hashlib
-sys.path.insert(0, os.path.expanduser("~/aranyhegy-redesign-2027/i18n"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "i18n"))
 import lib
 R = lib.ROOT
 M0, M1 = "\u0001", "\u0002"

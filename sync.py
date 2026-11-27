@@ -1,5 +1,5 @@
 import os
-root = os.path.expanduser("~/aranyhegy-redesign-2027/")
+root = os.path.dirname(os.path.abspath(__file__)) + "/"
 s = open(root + "opus/index.html", encoding="utf-8").read()
 meta = '<meta name="robots" content="noindex,nofollow">\n'
 if meta not in s:
